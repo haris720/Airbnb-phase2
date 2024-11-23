@@ -9,7 +9,7 @@ const Cards = () => {
   const { selectedCategory } = useContext(AppContext);
 
   if (!selectedCategory) {
-    return <div>Select a category to view products</div>;
+    return <div>Loading</div>;
   }
 
   return (
@@ -25,7 +25,7 @@ const Cards = () => {
             </p>
           </div>
           <p className="property">{card.distance} kilometeres away</p>
-          <p className="property">{card.data}</p>
+          <p className="property">{card.date}</p>
           <p className="price">${card.price} night</p>
         </Link>
       ))}

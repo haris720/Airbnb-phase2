@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
 
 export const AppContext = createContext();
 
@@ -15,6 +14,11 @@ const AppContextProvider = (props) => {
         const response = await fetch("http://localhost:5000/api/listing");
         const result = await response.json();
         setData(result.data);
+
+        // Automatically set the first category as default
+        if (result.data && result.data.length > 0) {
+          setSelectedCategory(result.data[0]); // Set the first category as default
+        }
         console.log(result.data);
       } catch (error) {
         setError("Failed to fetch data");
